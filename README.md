@@ -1,5 +1,3 @@
 # p4e-wordFinders
 
-This is text for testing
-
-This is an exclusive word
+This program allows for you to choose a text file and search for words within that file

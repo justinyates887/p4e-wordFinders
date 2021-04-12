@@ -7,20 +7,6 @@ def init():
 base = Tk()
 base.geometry('300x150')
 
-def file_opener():
-   try:
-       fname = filedialog.askopenfilename(initialdir = "/", filetypes = (("Text Files" , "*.txt"), ("Markdown Files", "*.md")))
-       print(fname)
-       if fname is not None:
-           fhand = open(fname.name)
-           words(fhand)
-   except:
-        print('No file was selected, please try again...')
-
-x = Button(base, text ='Please select a text file to open', command = lambda:file_opener())
-x.pack()
-base.mainloop()
-
 def match(words, fhand):
     count = 0
     for word in words:
@@ -37,5 +23,20 @@ def words(fhand):
         words.append(word)
         word = input()
     match(words, fhand)
+
+def file_opener():
+    try:
+        fname = filedialog.askopenfilename(initialdir = "/", filetypes = (("Text Files" , "*.txt"), ("Markdown Files", "*.md"), ("Word Files", "*.docx")))
+        print(fname)
+        if fname is not None:
+            fhand = open(fname)
+            words(fhand)
+
+    except:
+        print('No file was selected, please try again...')
+
+x = Button(base, text ='Please select a text file to open', command = lambda:file_opener())
+x.pack()
+base.mainloop()
 
 init()
